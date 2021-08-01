@@ -111,7 +111,7 @@ class PreviewWindow:
         self.window.geometry("+25+25")
         self.window.rowconfigure(0, minsize=400)
         self.window.columnconfigure(0, minsize=400)
-        self.window.protocol("WM_DELETE_WINDOW", lambda : sys.exit())
+        self.window.protocol("WM_DELETE_WINDOW", lambda : exit())
 
         # btn_spec = Button(self.window, text="Special Window", command=lambda : nextwindow(self.root, self.window))
         # btn_spec.grid()
@@ -183,7 +183,7 @@ class FunctionWindow():
         self.window.geometry("+25+25")
         self.window.rowconfigure(0, minsize=400)
         self.window.columnconfigure(0, minsize=400)
-        self.window.protocol("WM_DELETE_WINDOW", lambda : sys.exit())
+        self.window.protocol("WM_DELETE_WINDOW", lambda : exit())
 
         content = Frame(self.window)
         content.grid(row=0, column=0, sticky="nsew")
