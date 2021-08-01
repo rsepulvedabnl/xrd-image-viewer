@@ -196,7 +196,31 @@ class FunctionWindow():
         plot_frame.grid(row=0, column=1)
         panel_frame.columnconfigure(0, minsize=100)
 
+        lbl_fns = Label(panel_frame, text="Functions")
+        lbl_fns.grid(row=0, column=0, sticky="w")
         fns = ["Max", "Max - BG", "Avg - Bg"]
         fnsvar = StringVar(value=fns)
         fnlist = Listbox(panel_frame, listvariable=fnsvar)
-        fnlist.grid(row=0, column=0, sticky="ew")
+        fnlist.grid(row=1, column=0, sticky="ew")
+
+        instr_frame = LabelFrame(panel_frame, text="Instructions")
+        instr_frame.grid(row=2, column=0, sticky="ew")
+        lbl_instr = Label(instr_frame, text="")
+        lbl_instr.grid(row=0, column=0)
+
+        ret_frame = LabelFrame(panel_frame, text="Return Types")
+        ret_frame.grid(row=3, column=0, sticky="ew")
+        lbl_ret = Label(ret_frame, text="")
+        lbl_ret.grid(row=0, column=0)
+
+        output_frame = LabelFrame(panel_frame, text="Function Output")
+        output_frame.grid(row=4, column=0, sticky="ew")
+        lbl_output = Label(output_frame, text="")
+        lbl_output.grid(row=0, column=0)
+
+        fig, ax = plt.subplots()
+        DataPlotter.plotpath(self.fileselection.pointpaths[0], ax, 0, 1e4)
+        canvas = FigureCanvasTkAgg(fig, master=plot_frame)
+        toolbar = NavigationToolbar2Tk(canvas, plot_frame)
+        toolbar.grid(row=0, column=0)
+        canvas.get_tk_widget().grid(row=1, column=0)
